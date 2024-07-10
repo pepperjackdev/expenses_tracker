@@ -1,33 +1,64 @@
 package io.github.pepperjackdev.expensestracker.repository.expenses;
 
-import static io.github.pepperjackdev.expensestracker.constans.Adresses.EXPENSES_DATABASE_PATH;
+import static io.github.pepperjackdev.expensestracker.constans.repository.Repository.CATEGORIES_TABLE;
+import static io.github.pepperjackdev.expensestracker.constans.repository.Repository.EXPENSES_TABLE;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import io.github.pepperjackdev.expensestracker.repository.Repository;
 import io.github.pepperjackdev.expensestracker.repository.expenses.categories.Category;
 
 /**
- * Expenses classe: used to manage the expenses of the user
+ * Expenses class: used to manage the expenses of the user
  * and store them in a database.
  */
 public final class Expenses
-    implements Repository<Expense> {
-
+    extends Repository<Expense> {
+    
     public Expenses() {
-
+        
     }
 
     // Implementing from Repository<...>
     @Override
-    public String getDatabaseStringPath() {
-        return EXPENSES_DATABASE_PATH; // Hardcoded
-    }
+    protected void initialize() {
+        try (Connection connection = DriverManager.getConnection(connectionString)) {
+            
+            //
+            // CREATING EXPENSES TABLE
+            //
+            
+            PreparedStatement createExpensesTable = connection.prepareStatement("""
+                CREATE TABLE IF NOT EXISTS %s (
+                    id INTEGER PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    description TEXT,
+                    amount REAL NOT NULL,
+                    category_id INTEGER,
+                    date TEXT NOT NULL
+                );
+            """.formatted(EXPENSES_TABLE));
+            createExpensesTable.executeUpdate();
 
-    // Implementing from Repository<...>
-    @Override
-    public void initialized() {
-        // FIXME: Give and implementation of this method
+            //
+            // CREATING CATEGORIES TABLE
+            //
+
+            PreparedStatement createCategoriesTable = connection.prepareStatement("""
+                CREATE TABLE IF NOT EXISTS %s (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL
+                );
+            """.formatted(CATEGORIES_TABLE));
+            createCategoriesTable.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Add
@@ -52,7 +83,7 @@ public final class Expenses
 
     // Remove
 
-    public void remove() {
+    public void remove(Expense expense) {
         
     }
 
