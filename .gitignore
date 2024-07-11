@@ -1,0 +1,11 @@
+# vscode
+.vscode
+
+# compiled binaries
+target
+
+# application databases (should be generated at first runtime)
+*.db
+
+# draw.io backups
+uml_diagrams/*.bpk
