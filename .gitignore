@@ -9,3 +9,4 @@ target
 
 # draw.io backups
 uml_diagrams/*.bpk
+uml_diagrams/*.dtmp
