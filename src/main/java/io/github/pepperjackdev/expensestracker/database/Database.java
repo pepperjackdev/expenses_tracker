@@ -20,6 +20,10 @@ public abstract class Database<T> {
     protected Database(String path) {
         this.databaseStringPath = path;
         this.connectionString = "jdbc:sqlite:" + path;
+
+        if (!this.check()) {
+            this.initialize();
+        }
     }
 
     /**
