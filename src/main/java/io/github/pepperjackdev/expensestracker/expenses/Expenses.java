@@ -13,8 +13,8 @@ import java.util.UUID;
 
 import io.github.pepperjackdev.expensestracker.database.Database;
 
-public class Expenses 
-    extends Database<Expense>{
+public final class Expenses 
+    extends Database<Expense> {
 
     public Expenses(String path) {
         super(path);
@@ -141,8 +141,8 @@ public class Expenses
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
             PreparedStatement getAllExpenses = connection.prepareStatement("SELECT id FROM expenses WHERE category=? AND date BETWEEN ? AND ?");
             getAllExpenses.setString(1, category);
-            getAllExpenses.setString(2, from.toString());
-            getAllExpenses.setString(3, to.toString());
+            getAllExpenses.setDate(2, Date.valueOf(from));
+            getAllExpenses.setDate(3, Date.valueOf(to));
             ResultSet resultSet = getAllExpenses.executeQuery();
 
             while (resultSet.next()) {
@@ -157,5 +157,26 @@ public class Expenses
         }
 
         return expenses;
+    }
+
+    public void deleteExpense(Expense expense) {
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement deleteExpense = connection.prepareStatement("DELETE FROM expenses WHERE id=?");
+            deleteExpense.setString(1, expense.getId());
+            deleteExpense.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAllExpenses() {
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement deleteAllExpenses = connection.prepareStatement("DELETE FROM expenses");
+            deleteAllExpenses.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

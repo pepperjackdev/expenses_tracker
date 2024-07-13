@@ -3,12 +3,17 @@ package io.github.pepperjackdev.expensestracker.database;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import io.github.pepperjackdev.expensestracker.expenses.Expenses;
+import io.github.pepperjackdev.expensestracker.expenses.categories.Categories;
+
 /**
  * Database
  * 
  * @param <T> The type of a single record in the database
  */
-public abstract class Database<T> {
+public sealed abstract class Database<T> 
+    permits Expenses, Categories{
+    
     private final String databaseStringPath; // The path to the database file as a String
     private final String connectionString; // The connection string to the database
 
