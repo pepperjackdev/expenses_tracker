@@ -20,6 +20,18 @@ public final class Expenses
         super(path);
     }
 
+    protected boolean check() {
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement checkExpensesTable = connection.prepareStatement("SELECT * FROM expenses");
+            checkExpensesTable.execute();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     @Override
     protected void initialize() {
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
