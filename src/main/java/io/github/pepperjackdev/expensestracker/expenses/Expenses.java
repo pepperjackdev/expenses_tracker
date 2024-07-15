@@ -13,7 +13,7 @@ import java.util.UUID;
 
 import io.github.pepperjackdev.expensestracker.database.Database;
 
-public final class Expenses 
+public final class Expenses
     extends Database<Expense> {
 
     public Expenses(String path) {
