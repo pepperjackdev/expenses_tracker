@@ -23,8 +23,7 @@ public final class Expenses
     protected boolean check() {
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
             PreparedStatement checkExpensesTable = connection.prepareStatement("SELECT * FROM expenses");
-            checkExpensesTable.execute();
-            return true;
+            return checkExpensesTable.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();

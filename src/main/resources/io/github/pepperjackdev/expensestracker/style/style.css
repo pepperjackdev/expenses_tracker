@@ -1,0 +1,16 @@
+
+@font-face {
+    font-family: 'Silkscreen';
+    src: url("../fonts/Silkscreen-Regular.ttf");
+}
+
+/* dashboard specific style */
+
+#totalMonthAmount, #currencyChoise {
+    -fx-font-family: 'Silkscreen';
+    -fx-font-size: 25px;
+}
+
+#currencyChoise {
+    -fx-background-color: transparent;
+}

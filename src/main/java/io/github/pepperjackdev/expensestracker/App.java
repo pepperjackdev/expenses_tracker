@@ -1,6 +1,7 @@
 package io.github.pepperjackdev.expensestracker;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import io.github.pepperjackdev.expensestracker.expenses.Expenses;
 import javafx.application.Application;
@@ -13,8 +14,12 @@ import static io.github.pepperjackdev.expensestracker.constants.Paths.DASHBOARD_
 
 public class App extends Application {
 
-    public static final Expenses expenses = new Expenses("appdata.db"); 
+    public static final Expenses expenses; 
     private static Scene scene;
+
+    static {
+        expenses = new Expenses("data.db");
+    }
     
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,6 +38,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        // let's feed the database with some data
+        expenses.addNewExpense(13.5, "Lunch at restaurant", LocalDate.of(2024, 2, 13), DASHBOARD_FXML);
         launch();
     }
 }

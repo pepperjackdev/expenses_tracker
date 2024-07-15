@@ -3,11 +3,12 @@ module io.github.pepperjackdev.expensestracker {
     requires javafx.fxml;
     requires transitive javafx.graphics;
 
-    requires java.sql;
+    requires java.sql.rowset;
 
     opens io.github.pepperjackdev.expensestracker;
     exports io.github.pepperjackdev.expensestracker;
     exports io.github.pepperjackdev.expensestracker.expenses;
+    opens io.github.pepperjackdev.expensestracker.controllers;
 
     opens io.github.pepperjackdev.expensestracker.expenses;
 }
