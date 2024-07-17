@@ -24,9 +24,7 @@ public final class Expenses
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
             PreparedStatement checkExpensesTable = connection.prepareStatement("SELECT * FROM expenses");
             return checkExpensesTable.execute();
-
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -168,6 +166,64 @@ public final class Expenses
         }
 
         return expenses;
+    }
+
+    public List<Expense> getLastExpenses(int n) {
+        List<Expense> expenses = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement getLastExpenses = connection.prepareStatement("SELECT id FROM expenses ORDER BY date DESC LIMIT ?");
+            getLastExpenses.setInt(1, n);
+            ResultSet resultSet = getLastExpenses.executeQuery();
+
+            while (resultSet.next()) {
+                expenses.add(new Expense(
+                    resultSet.getString("id"),
+                    getConnectionString()
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return expenses;
+    }
+
+    public List<String> getAllCategories() {
+        List<String> categories = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement getAllCategories = connection.prepareStatement("SELECT DISTINCT category FROM expenses");
+            ResultSet resultSet = getAllCategories.executeQuery();
+
+            while (resultSet.next()) {
+                categories.add(resultSet.getString("category"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
+    }
+
+    public List<String> getMostTargettedCategories() {
+        List<String> categories = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement getMostTargettedCategories = connection.prepareStatement("SELECT category, COUNT(category) AS count FROM expenses GROUP BY category ORDER BY count DESC");
+            ResultSet resultSet = getMostTargettedCategories.executeQuery();
+
+            while (resultSet.next()) {
+                categories.add(resultSet.getString("category"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
     }
 
     public void deleteExpense(Expense expense) {

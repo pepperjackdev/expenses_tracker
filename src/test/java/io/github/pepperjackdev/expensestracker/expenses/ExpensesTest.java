@@ -57,6 +57,24 @@ public class ExpensesTest {
     }
 
     @Test
+    void testGetLastExpenses() {
+        List<Expense> result = expenses.getLastExpenses(3);
+        assertEquals(3, result.size());
+    }
+
+    @Test
+    void testGetAllCategories() {
+        List<String> result = expenses.getAllCategories();
+        assertEquals(5, result.size());
+    }
+
+    @Test
+    void testGetMostTargettedCategories() {
+        List<String> result = expenses.getMostTargettedCategories();
+        assertEquals(5, result.size());
+    }
+
+    @Test
     void testDeleteExpense() {
         List<Expense> result = expenses.getAllExpenses();
         Expense expense = result.get(0);

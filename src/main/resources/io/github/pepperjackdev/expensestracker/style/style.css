@@ -4,10 +4,20 @@
     src: url("../fonts/Silkscreen-Regular.ttf");
 }
 
+@font-face {
+    font-family: 'Manrope';
+    src: url("../fonts/Manrope-Variable.ttf");
+}
+
+* {
+    -fx-background-color: #0d1b2a;
+}
+
 /* dashboard specific style */
 
 #totalMonthAmount, #currencyChoise {
-    -fx-font-family: 'Silkscreen';
+    -fx-font-family: 'Monrope';
+    -fx-font-weight: bold;
     -fx-font-size: 25px;
 }
 

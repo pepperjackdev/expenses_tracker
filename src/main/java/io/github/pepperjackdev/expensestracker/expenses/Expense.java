@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Expense {
 
@@ -118,6 +119,6 @@ public class Expense {
 
     @Override
     public String toString() {
-        return "Expense<%s> (amount: %f, description: %s, date: %s, category: %s)".formatted(id, getAmount(), getDescription(), getDate(), getCategory());
+        return "%s: %f (%s)".formatted(getDescription(), getAmount(), getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 }

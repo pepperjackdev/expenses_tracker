@@ -20,4 +20,9 @@ public enum Currency {
     public String getCurrencyName() {
         return currencyName;
     }
+
+    @Override
+    public String toString() {
+        return getCurrencySymbol();
+    }
 }

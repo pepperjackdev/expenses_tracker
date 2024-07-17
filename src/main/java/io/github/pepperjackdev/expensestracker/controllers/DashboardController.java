@@ -2,25 +2,23 @@ package io.github.pepperjackdev.expensestracker.controllers;
 
 import static io.github.pepperjackdev.expensestracker.App.expenses;
 
-import java.util.Arrays;
-
-import io.github.pepperjackdev.expensestracker.utils.currencies.Currency;
+import io.github.pepperjackdev.expensestracker.expenses.Expense;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class DashboardController {
     
     @FXML Label totalMonthAmount;
-    @FXML ChoiceBox<String> currencyChoise;
+    @FXML ListView<Expense> lastExpenses;
+    @FXML ListView<String> mostTargettedCategories;
 
     public void initialize() {
         totalMonthAmount.setText(String.valueOf(expenses.getAllExpenses().stream()
                 .mapToDouble(expense -> expense.getAmount())
                 .sum()));
 
-        currencyChoise.getItems().addAll(Arrays.stream(Currency.values())
-                .map(currency -> currency.getCurrencySymbol())
-                .toArray(String[]::new));
+        lastExpenses.getItems().addAll(expenses.getLastExpenses(10)); // Let's show the last 10 expenses
+        mostTargettedCategories.getItems().addAll(expenses.getMostTargettedCategories());
     }
 }
