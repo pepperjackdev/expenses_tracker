@@ -3,6 +3,7 @@ package io.github.pepperjackdev.expensestracker;
 import static io.github.pepperjackdev.expensestracker.constants.Paths.DASHBOARD_FXML;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import io.github.pepperjackdev.expensestracker.expenses.Expenses;
 import javafx.application.Application;
@@ -38,6 +39,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // let's feed the database with some data
+        expenses.addNewExpense(13.5, "Dinner at restaurent", LocalDate.now() , "Food");
         launch();
     }
 }

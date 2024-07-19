@@ -10,7 +10,8 @@
 }
 
 * {
-    -fx-background-color: #0d1b2a;
+    -fx-background-color: #22223b;
+    -fx-text-fill: #4a4e69;
 }
 
 /* dashboard specific style */
@@ -23,4 +24,8 @@
 
 #currencyChoise {
     -fx-background-color: transparent;
+}
+
+#lastExpenses, #mostTargettedCategories {
+    -fx-text-fill: white;
 }

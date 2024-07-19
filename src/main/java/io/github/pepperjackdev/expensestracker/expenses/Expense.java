@@ -119,6 +119,6 @@ public class Expense {
 
     @Override
     public String toString() {
-        return "%s: %f (%s)".formatted(getDescription(), getAmount(), getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        return "%s: %s (%s)".formatted(getDescription(), Double.toString(getAmount()), getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 }

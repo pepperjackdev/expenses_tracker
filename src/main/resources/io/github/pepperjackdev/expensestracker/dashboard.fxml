@@ -4,9 +4,11 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardController">
    <top>
       <StackPane prefHeight="130.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,21 +26,40 @@
    <bottom>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
-            <ListView fx:id="mostTargettedCategories" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="mostTargettedCategories" maxHeight="200.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <Label fx:id="mostTargettedExpenses" text="Most targetted categories" BorderPane.alignment="TOP_LEFT" />
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefWidth="50.0" />
+                  <Label text="Most targetted categories" />
+               </children>
+            </HBox>
          </top>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
+         </left>
       </BorderPane>
    </bottom>
    <center>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
-            <ListView fx:id="lastExpenses" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="lastExpenses" maxHeight="200.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <Label text="Last expenses" BorderPane.alignment="CENTER_LEFT" />
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefWidth="50.0" />
+                  <Label text="Last expenses (within last 30 days)" />
+               </children>
+            </HBox>
          </top>
+         <left>
+            <Pane prefHeight="114.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <Pane prefHeight="20.0" prefWidth="500.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </center>
 </BorderPane>

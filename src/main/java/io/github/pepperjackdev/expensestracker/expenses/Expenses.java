@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import io.github.pepperjackdev.expensestracker.database.Database;
@@ -59,6 +60,10 @@ public final class Expenses
         String description,
         LocalDate date,
         String category) {
+
+            // Input validations // FIXME: Validate ALL the fields
+            Objects.requireNonNull(date);
+
             try (Connection connection = DriverManager.getConnection(getConnectionString())) {
             String id = UUID.randomUUID().toString();
 
