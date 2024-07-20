@@ -8,24 +8,3 @@
     font-family: 'Manrope';
     src: url("../fonts/Manrope-Variable.ttf");
 }
-
-* {
-    -fx-background-color: #22223b;
-    -fx-text-fill: #4a4e69;
-}
-
-/* dashboard specific style */
-
-#totalMonthAmount, #currencyChoise {
-    -fx-font-family: 'Monrope';
-    -fx-font-weight: bold;
-    -fx-font-size: 25px;
-}
-
-#currencyChoise {
-    -fx-background-color: transparent;
-}
-
-#lastExpenses, #mostTargettedCategories {
-    -fx-text-fill: white;
-}
