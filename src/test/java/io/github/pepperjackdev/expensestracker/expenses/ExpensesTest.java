@@ -57,9 +57,15 @@ public class ExpensesTest {
     }
 
     @Test
-    void testGetLastExpenses() {
-        List<Expense> result = expenses.getLastExpenses(3);
-        assertEquals(3, result.size());
+    void testGetTotalExpensesOfToday() {
+        double result = expenses.getTotalAmountOfExpensesOfToday();
+        assertEquals(150.0, result);
+    }
+
+    @Test
+    void testGetTotalExpensesOfThisMonth() {
+        double result = expenses.getTotalAmountOfExpensesOfThisMonth();
+        assertEquals(150.0, result);
     }
 
     @Test

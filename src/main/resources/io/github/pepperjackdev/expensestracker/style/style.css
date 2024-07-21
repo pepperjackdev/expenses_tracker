@@ -1,10 +1,9 @@
 
-@font-face {
-    font-family: 'Silkscreen';
-    src: url("../fonts/Silkscreen-Regular.ttf");
+* {
+    -fx-text-fill: #FFFFFF;
 }
 
-@font-face {
-    font-family: 'Manrope';
-    src: url("../fonts/Manrope-Variable.ttf");
+#root {
+    -fx-background-color: #0D1B2A;
+    -fx-background-radius: 10px;
 }

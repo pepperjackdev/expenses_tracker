@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -149,6 +150,10 @@ public final class Expenses
         return expenses;
     }
 
+    public List<Expense> getTodaysExpenses() {
+        return getAllExpensesOfDateRange(LocalDate.now(), LocalDate.now());
+    }
+
     public List<Expense> getAllExpensesOfCategoryAndDateRange(String category, LocalDate from, LocalDate to) {
         List<Expense> expenses = new ArrayList<>();
 
@@ -173,48 +178,33 @@ public final class Expenses
         return expenses;
     }
 
-    public List<Expense> getTodaysExpenses() {
-        return getAllExpensesOfDateRange(LocalDate.now(), LocalDate.now());
-    }
-
-    public List<Expense> getLastExpenses(int n) {
-        List<Expense> expenses = new ArrayList<>();
-
-        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
-            PreparedStatement getLastExpenses = connection.prepareStatement("SELECT id FROM expenses ORDER BY date DESC LIMIT ?");
-            getLastExpenses.setInt(1, n);
-            ResultSet resultSet = getLastExpenses.executeQuery();
-
-            while (resultSet.next()) {
-                expenses.add(new Expense(
-                    resultSet.getString("id"),
-                    getConnectionString()
-                ));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return expenses;
-    }
-
     public double getTotalAmountOfExpensesOfDateRange(LocalDate from, LocalDate to) {
 
         double amount = -1;
 
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
-            PreparedStatement getTotalAmountOfExpensesOfDateRange = connection.prepareStatement("--sql select sum(amount) as total_expenses from expenses where 'date' between ? and ?");
+            PreparedStatement getTotalAmountOfExpensesOfDateRange = connection.prepareStatement("SELECT SUM(amount) AS total_expenses FROM expenses WHERE date BETWEEN ? AND ?");
             getTotalAmountOfExpensesOfDateRange.setDate(1, Date.valueOf(from));
             getTotalAmountOfExpensesOfDateRange.setDate(2, Date.valueOf(to));
-            getTotalAmountOfExpensesOfDateRange.execute();
+            System.out.println(getTotalAmountOfExpensesOfDateRange.execute());
 
-            amount = getTotalAmountOfExpensesOfDateRange.getResultSet().getDouble("total_expenses");
+            amount = getTotalAmountOfExpensesOfDateRange.getResultSet().getDouble("");
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return amount;
+    }
+
+    public double getTotalAmountOfExpensesOfThisMonth() {
+        YearMonth thisMonth = YearMonth.of(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
+        LocalDate monthStart = thisMonth.atDay(1);
+        LocalDate monthEnd = thisMonth.atEndOfMonth();
+        return getTotalAmountOfExpensesOfDateRange(monthStart, monthEnd);
+    }
+
+    public double getTotalAmountOfExpensesOfToday() {
+        return getTotalAmountOfExpensesOfDateRange(LocalDate.now(), LocalDate.now());
     }
 
     public List<String> getAllCategories() {

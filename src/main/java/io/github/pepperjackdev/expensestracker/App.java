@@ -1,6 +1,7 @@
 package io.github.pepperjackdev.expensestracker;
 
 import static io.github.pepperjackdev.expensestracker.constants.Paths.DASHBOARD_FXML;
+import static io.github.pepperjackdev.expensestracker.constants.Paths.MAIN_FXML;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -10,11 +11,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
 
     public static final Expenses expenses; 
+    public static Stage stage;
     private static Scene scene;
 
     static {
@@ -23,7 +27,11 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML(DASHBOARD_FXML));
+        App.stage = stage;
+
+        scene = new Scene(loadFXML(MAIN_FXML));
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
     }

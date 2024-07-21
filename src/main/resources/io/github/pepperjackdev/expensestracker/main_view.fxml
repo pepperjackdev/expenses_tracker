@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="600.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.MainViewController">
+   <top>
+      <BorderPane fx:id="titleBar" prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <left>
+            <StackPane prefHeight="40.0" prefWidth="130.0" BorderPane.alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Expenses Tracker" />
+               </children>
+            </StackPane>
+         </left>
+      </BorderPane>
+   </top>
+</BorderPane>
