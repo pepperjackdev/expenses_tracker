@@ -173,6 +173,10 @@ public final class Expenses
         return expenses;
     }
 
+    public List<Expense> getTodaysExpenses() {
+        return getAllExpensesOfDateRange(LocalDate.now(), LocalDate.now());
+    }
+
     public List<Expense> getLastExpenses(int n) {
         List<Expense> expenses = new ArrayList<>();
 
@@ -193,6 +197,24 @@ public final class Expenses
         }
 
         return expenses;
+    }
+
+    public double getTotalAmountOfExpensesOfDateRange(LocalDate from, LocalDate to) {
+
+        double amount = -1;
+
+        try (Connection connection = DriverManager.getConnection(getConnectionString())) {
+            PreparedStatement getTotalAmountOfExpensesOfDateRange = connection.prepareStatement("--sql select sum(amount) as total_expenses from expenses where 'date' between ? and ?");
+            getTotalAmountOfExpensesOfDateRange.setDate(1, Date.valueOf(from));
+            getTotalAmountOfExpensesOfDateRange.setDate(2, Date.valueOf(to));
+            getTotalAmountOfExpensesOfDateRange.execute();
+
+            amount = getTotalAmountOfExpensesOfDateRange.getResultSet().getDouble("total_expenses");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
     }
 
     public List<String> getAllCategories() {
