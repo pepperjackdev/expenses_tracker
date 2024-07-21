@@ -1,6 +1,5 @@
 package io.github.pepperjackdev.expensestracker;
 
-import static io.github.pepperjackdev.expensestracker.constants.Paths.DASHBOARD_FXML;
 import static io.github.pepperjackdev.expensestracker.constants.Paths.MAIN_FXML;
 
 import java.io.IOException;

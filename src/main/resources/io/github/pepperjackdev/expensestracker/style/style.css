@@ -7,3 +7,32 @@
     -fx-background-color: #0D1B2A;
     -fx-background-radius: 10px;
 }
+
+#minimizeButton, #maximizeButton, #closeButton {
+    -fx-background-radius: 100px;
+}
+
+#closeButton {
+    -fx-background-color: #152B44;
+}
+
+#maximizeButton {
+    -fx-background-color: #1C3B5D;
+}
+
+#minimizeButton {
+    -fx-background-color: #244B75;
+}
+
+#closeButton:hover, #maximizeButton:hover, #minimizeButton:hover {
+    -fx-background-color: #576676;
+}
+
+#navigationBar {
+    -fx-background-color: #1B263B;
+    -fx-background-radius: 5px;
+}
+
+.button {
+    -fx-background-color: transparent;
+}

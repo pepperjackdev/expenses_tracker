@@ -6,8 +6,11 @@ module io.github.pepperjackdev.expensestracker {
     requires java.sql.rowset;
 
     opens io.github.pepperjackdev.expensestracker;
+    opens io.github.pepperjackdev.expensestracker.expenses;
+    opens io.github.pepperjackdev.expensestracker.controllers;
+    
     exports io.github.pepperjackdev.expensestracker;
     exports io.github.pepperjackdev.expensestracker.expenses;
+    exports io.github.pepperjackdev.expensestracker.controllers;
 
-    opens io.github.pepperjackdev.expensestracker.expenses;
 }
