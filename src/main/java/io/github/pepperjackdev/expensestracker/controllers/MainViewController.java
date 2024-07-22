@@ -4,15 +4,19 @@ import io.github.pepperjackdev.expensestracker.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 public class MainViewController {
     double x, y;
 
     @FXML BorderPane root;
     @FXML BorderPane titleBar;
+
     @FXML Button closeButton;
     @FXML Button maximizeButton;
     @FXML Button minimizeButton;
+
+    @FXML StackPane dynamicFrame;
 
     @FXML
     void initialize() {
@@ -49,6 +53,10 @@ public class MainViewController {
         });
 
         minimizeButton.setOnAction(e -> App.stage.setIconified(true));
+
+        // By default behavior, the dashboard is loaded at first
+        // TODO: Implement default loading of dashboard view
+        
     }
 
 }

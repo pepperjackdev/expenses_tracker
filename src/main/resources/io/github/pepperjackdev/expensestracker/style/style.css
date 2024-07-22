@@ -1,11 +1,25 @@
 
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/inter_variable.ttf");
+}
+
 * {
+    -fx-font-family: "Inter";
     -fx-text-fill: #FFFFFF;
+}
+
+.root {
+    -fx-background-color: #0D1B2A;
 }
 
 #root {
     -fx-background-color: #0D1B2A;
     -fx-background-radius: 10px;
+
+    -fx-border-color: #1b2b3c;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
 }
 
 #minimizeButton, #maximizeButton, #closeButton {
@@ -33,6 +47,23 @@
     -fx-background-radius: 5px;
 }
 
-.button {
+#navigationBar .button {
     -fx-background-color: transparent;
+    -fx-text-fill: #778DA9;
+}
+
+#navigationBar .button:hover {
+    -fx-background-color: #778da917;
+}
+
+.cash-view {
+    -fx-font-size: 18px;
+}
+
+.description {
+    -fx-text-fill: #778DA9;
+}
+
+.internal-link {
+    
 }

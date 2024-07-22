@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <BorderPane prefHeight="70.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Information" />
+                  <Label styleClass="cash-view" text="EE€" />
+                  <Label styleClass="description" text="Label" />
+               </children>
+            </VBox>
+         </center>
+         <left>
+            <Pane prefHeight="70.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <StackPane prefHeight="70.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </StackPane>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>

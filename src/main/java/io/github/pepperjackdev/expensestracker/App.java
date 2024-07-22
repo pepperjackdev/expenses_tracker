@@ -27,7 +27,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         App.stage = stage;
-
         scene = new Scene(loadFXML(MAIN_FXML));
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
@@ -40,8 +39,13 @@ public class App extends Application {
     }
     
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = getFXMLLoader(fxml);
         return fxmlLoader.load();
+    }
+
+    private static FXMLLoader getFXMLLoader(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader;
     }
 
     public static void main(String[] args) {
