@@ -4,12 +4,17 @@
     src: url("../fonts/inter_variable.ttf");
 }
 
-* {
+@font-face {
+    font-family: "Quicksand";
+    src: url("../fonts/quicksand_variable.ttf");
+}
+
+* { /* Default font and text color */
     -fx-font-family: "Inter";
     -fx-text-fill: #FFFFFF;
 }
 
-.root {
+.root { 
     -fx-background-color: #0D1B2A;
 }
 
@@ -56,7 +61,13 @@
     -fx-background-color: #778da917;
 }
 
+.box {
+    -fx-background-radius: 5px;
+    -fx-background-color: #1B263B;
+}
+
 .cash-view {
+    -fx-font-family: "Quicksand";
     -fx-font-size: 18px;
 }
 
@@ -65,5 +76,11 @@
 }
 
 .internal-link {
-    
+    -fx-background-color: transparent;
+    -fx-underline: true;
+    -fx-text-fill: #778DA9;
+}
+
+.internal-link:hover {
+    -fx-text-fill: #acb4be;
 }
