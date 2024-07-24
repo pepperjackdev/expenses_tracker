@@ -1,8 +1,13 @@
 package io.github.pepperjackdev.expensestracker.controllers;
 
+import java.io.IOException;
+
 import io.github.pepperjackdev.expensestracker.App;
+import io.github.pepperjackdev.expensestracker.controllers.views.Views;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -17,6 +22,9 @@ public class MainViewController {
     @FXML Button minimizeButton;
 
     @FXML StackPane dynamicFrame;
+    
+    @FXML ButtonBar navigationBar;
+    @FXML Button dashboardButton;
 
     @FXML
     void initialize() {
@@ -55,8 +63,44 @@ public class MainViewController {
         minimizeButton.setOnAction(e -> App.stage.setIconified(true));
 
         // By default behavior, the dashboard is loaded at first
-        // TODO: Implement default loading of dashboard view
+        loadViewIntoDynamicFrame(Views.DASHBOARD, dashboardButton);
+
+        // Buttons behaviour
+
+        // Every button without an id hasn't (yet) an fxml view associated with it: it should be disabled
+        navigationBar.getChildrenUnmodifiable().forEach(n -> {
+            if (n instanceof Button button && button.getId() == null) {
+                button.setDisable(true);
+            }
+        });
+
+        // Buttons targetted here have an id
+
+        dashboardButton.setOnAction(e -> {
+            loadViewIntoDynamicFrame(Views.DASHBOARD, dashboardButton);
+        });
         
     }
 
+    void loadViewIntoDynamicFrame(Views view) {
+        try {
+            Node node = App.loadFXML(view.toString());
+            dynamicFrame.getChildren().setAll(node);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }    
+    }
+
+    void loadViewIntoDynamicFrame(Views view, Button associatedButton) {
+        loadViewIntoDynamicFrame(view);
+
+        // let's reset the color of navbar buttons
+        navigationBar.getChildrenUnmodifiable().forEach(n -> {
+            if (n instanceof Button button) {
+                button.setStyle("-fx-text-fill: #778DA9");
+            }
+        });
+
+        associatedButton.setStyle("-fx-text-fill: #FFFFFF");
+    }
 }

@@ -1,10 +1,9 @@
 package io.github.pepperjackdev.expensestracker;
 
-import static io.github.pepperjackdev.expensestracker.constants.Paths.MAIN_FXML;
-
 import java.io.IOException;
 import java.time.LocalDate;
 
+import io.github.pepperjackdev.expensestracker.controllers.views.Views;
 import io.github.pepperjackdev.expensestracker.expenses.Expenses;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +26,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         App.stage = stage;
-        scene = new Scene(loadFXML(MAIN_FXML));
+        scene = new Scene(loadFXML(Views.MAIN.toString()));
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
@@ -38,12 +37,12 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = getFXMLLoader(fxml);
         return fxmlLoader.load();
     }
 
-    private static FXMLLoader getFXMLLoader(String fxml) throws IOException {
+    public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader;
     }

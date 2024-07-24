@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardViewController">
    <top>
       <BorderPane fx:id="monthStatus" styleClass="box" BorderPane.alignment="CENTER">
          <center>
