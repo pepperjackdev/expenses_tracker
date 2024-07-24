@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -30,6 +31,10 @@ public class MainViewController {
     void initialize() {
 
         // TODO: implement resizing features
+
+        // -----------------------------------------------------
+        // Window features
+        // -----------------------------------------------------
 
         titleBar.setOnMousePressed(e -> {
 
@@ -62,15 +67,22 @@ public class MainViewController {
 
         minimizeButton.setOnAction(e -> App.stage.setIconified(true));
 
+        // -----------------------------------------------------
+        // Initializing views
+        // -----------------------------------------------------
+
         // By default behavior, the dashboard is loaded at first
         loadViewIntoDynamicFrame(Views.DASHBOARD, dashboardButton);
 
+        // -----------------------------------------------------
         // Buttons behaviour
+        // -----------------------------------------------------
 
         // Every button without an id hasn't (yet) an fxml view associated with it: it should be disabled
         navigationBar.getChildrenUnmodifiable().forEach(n -> {
             if (n instanceof Button button && button.getId() == null) {
-                button.setDisable(true);
+                button.setTooltip(new Tooltip("This view hasn't been initialized yet..."));
+                
             }
         });
 

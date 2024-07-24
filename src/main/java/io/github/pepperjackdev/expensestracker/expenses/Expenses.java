@@ -186,9 +186,9 @@ public final class Expenses
             PreparedStatement getTotalAmountOfExpensesOfDateRange = connection.prepareStatement("SELECT SUM(amount) AS total_expenses FROM expenses WHERE date BETWEEN ? AND ?");
             getTotalAmountOfExpensesOfDateRange.setDate(1, Date.valueOf(from));
             getTotalAmountOfExpensesOfDateRange.setDate(2, Date.valueOf(to));
-            System.out.println(getTotalAmountOfExpensesOfDateRange.execute());
+            getTotalAmountOfExpensesOfDateRange.execute();
 
-            amount = getTotalAmountOfExpensesOfDateRange.getResultSet().getDouble("");
+            amount = getTotalAmountOfExpensesOfDateRange.getResultSet().getDouble("total_expenses");
         } catch (SQLException e) {
             e.printStackTrace();
         }
