@@ -1,5 +1,6 @@
 package io.github.pepperjackdev.expensestracker.expenses;
 
+import java.lang.classfile.constantpool.PoolEntry;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -16,7 +17,7 @@ import java.util.UUID;
 import io.github.pepperjackdev.expensestracker.database.Database;
 
 public final class Expenses
-    extends Database<Expense> {
+    extends Database {
 
     public Expenses(String path) {
         super(path);
