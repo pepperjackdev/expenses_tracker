@@ -3,14 +3,20 @@ package io.github.pepperjackdev.expensestracker.expenses;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 // TODO: Use mockito to mock the database instead of using a test database
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExpensesTest { 
     private Expenses expenses;
 
@@ -27,6 +33,11 @@ public class ExpensesTest {
         expenses.addNewExpense(30.0, "Shoes", LocalDate.now(), "Clothing");
         expenses.addNewExpense(40.0, "Books", LocalDate.now(), "Education");
         expenses.addNewExpense(50.0, "Gym", LocalDate.now(), "Health");
+    }
+
+    @AfterAll
+    void tearDown() throws IOException {
+        Files.delete(Path.of("test_database.db"));
     }
 
     @Test

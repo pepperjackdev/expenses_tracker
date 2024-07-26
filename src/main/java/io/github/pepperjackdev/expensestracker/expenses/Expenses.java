@@ -1,6 +1,5 @@
 package io.github.pepperjackdev.expensestracker.expenses;
 
-import java.lang.classfile.constantpool.PoolEntry;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -42,7 +41,7 @@ public final class Expenses
 
             PreparedStatement initializeExpensesTable = connection.prepareStatement("""
                 CREATE TABLE IF NOT EXISTS expenses (
-                	id TEXT, 
+                	id TEXT,
                 	amount REAL,
                 	description TEXT,
                 	date DATE,
@@ -63,7 +62,7 @@ public final class Expenses
         LocalDate date,
         String category) {
 
-            // Input validations // FIXME: Validate ALL the fields
+            // Input validations // FIXME: validate ALL the fields
             Objects.requireNonNull(date);
 
             try (Connection connection = DriverManager.getConnection(getConnectionString())) {

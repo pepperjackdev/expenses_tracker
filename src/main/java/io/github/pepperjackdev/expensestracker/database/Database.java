@@ -2,14 +2,13 @@ package io.github.pepperjackdev.expensestracker.database;
 
 import java.nio.file.Path;
 
-import io.github.pepperjackdev.expensestracker.budget.Budget;
 import io.github.pepperjackdev.expensestracker.expenses.Expenses;
 
 /**
  * Database
  */
 public sealed abstract class Database
-    permits Expenses, Budget {
+    permits Expenses {
     
     protected final String databaseStringPath; // The path to the database file as a String
     private final String connectionString; // The connection string to the database

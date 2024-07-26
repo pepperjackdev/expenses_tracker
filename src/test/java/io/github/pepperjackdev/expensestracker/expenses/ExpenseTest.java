@@ -2,8 +2,12 @@ package io.github.pepperjackdev.expensestracker.expenses;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,6 +28,11 @@ public class ExpenseTest {
     void setUp() {
         expenses.deleteAllExpenses();
         expense = expenses.addNewExpense(1.0, "Coffee", LocalDate.now(), "Food");
+    }
+
+    @AfterAll
+    void tearDown() throws IOException {
+        Files.delete(Path.of("test_database.db"));
     }
 
     @Test

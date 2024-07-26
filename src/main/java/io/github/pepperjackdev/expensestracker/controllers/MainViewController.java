@@ -5,12 +5,14 @@ import java.io.IOException;
 import io.github.pepperjackdev.expensestracker.App;
 import io.github.pepperjackdev.expensestracker.controllers.views.Views;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 
 public class MainViewController {
     double x, y;
@@ -26,6 +28,8 @@ public class MainViewController {
     
     @FXML ButtonBar navigationBar;
     @FXML Button dashboardButton;
+
+    private boolean isMaximized = false;
 
     @FXML
     void initialize() {
@@ -56,11 +60,22 @@ public class MainViewController {
         closeButton.setOnAction(e -> App.stage.close());
 
         maximizeButton.setOnAction(e -> {
-            if (App.stage.isMaximized()) {
-                App.stage.setMaximized(false);
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            if (isMaximized && 
+                (App.stage.getWidth() == bounds.getWidth() && App.stage.getHeight() == bounds.getHeight())) {
+                App.stage.setWidth(600);
+                App.stage.setHeight(370);
+                App.stage.centerOnScreen();
+                isMaximized = false;
                 root.setStyle("-fx-background-radius: 10px");
             } else {
-                App.stage.setMaximized(true);
+                App.stage.setX(bounds.getMinX());
+                App.stage.setY(bounds.getMinY());
+                App.stage.setWidth(bounds.getWidth());
+                App.stage.setHeight(bounds.getHeight());
+                isMaximized = true;
                 root.setStyle("-fx-background-radius: 0px");
             }
         });

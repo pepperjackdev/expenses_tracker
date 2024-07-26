@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
+
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="600.0" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.MainViewController">
    <top>
       <BorderPane fx:id="titleBar" prefHeight="40.0" prefWidth="596.0" BorderPane.alignment="CENTER">
@@ -44,7 +45,7 @@
             <RowConstraints minHeight="-Infinity" percentHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ButtonBar fx:id="navigationBar" buttonOrder="U+L_HE+FBIX_NCYOA_R" maxHeight="-Infinity" prefHeight="24.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ButtonBar fx:id="navigationBar" buttonOrder="U+L_HE+FBIX_NCYOA_R" maxHeight="-Infinity" prefHeight="25.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                <buttons>
                   <Button fx:id="dashboardButton" mnemonicParsing="false" text="Dashboard" />
                   <Button mnemonicParsing="false" text="Expenses" />
