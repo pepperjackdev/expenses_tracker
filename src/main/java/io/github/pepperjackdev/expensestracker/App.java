@@ -1,8 +1,8 @@
 package io.github.pepperjackdev.expensestracker;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
+import io.github.pepperjackdev.expensestracker.config.Config;
 import io.github.pepperjackdev.expensestracker.controllers.views.Views;
 import io.github.pepperjackdev.expensestracker.expenses.Expenses;
 import javafx.application.Application;
@@ -15,6 +15,7 @@ import javafx.stage.StageStyle;
 
 public class App extends Application {
 
+    public static final Config config = Config.fromSerializedDataOrDefault("config.dat");
     public static final Expenses expenses; 
     public static Stage stage;
     private static Scene scene;
@@ -49,7 +50,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         // let's feed the database with some data
-        expenses.addNewExpense(13.5, "Dinner at restaurent", LocalDate.now() , "Food");
         launch();
     }
 }

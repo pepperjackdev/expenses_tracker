@@ -19,5 +19,12 @@ public class DashboardViewController {
         totalAmountSpentThisMonth.setText(String.valueOf(
             App.expenses.getTotalAmountOfExpensesOfThisMonth()
         ));
+
+        totalAmountSpentThisMonthBudgetIndicator.setText(String.valueOf(
+            "You're %s of your monthly budget by %s".formatted(
+                (App.config.getBudget().getMonthlyBudget() > App.expenses.getTotalAmountOfExpensesOfThisMonth()) ? "under" : "over",
+                App.expenses.getTotalAmountOfExpensesOfThisMonth() - App.config.getBudget().getMonthlyBudget()
+            )
+        ));
     }
 }
