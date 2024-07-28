@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.Period;
 
 import io.github.pepperjackdev.expensestracker.config.budget.Budget;
 
@@ -21,7 +22,10 @@ public class Config
 
     private Config(String path) {
         this.path = path;
-        this.budget = new Budget();
+        this.budget = new Budget( // FIXME -> Bad idea to hardcode the budget
+            Period.ofMonths(1),
+            1000
+        );
     }
     
     public static Config fromSerializedDataOrDefault(String path) {

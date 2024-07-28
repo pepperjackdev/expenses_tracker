@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="box" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardViewDailyExpensesController">
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <StackPane prefHeight="30.0" prefWidth="125.0">
+               <children>
+                  <Label styleClass="description" text="Today's Expenses" />
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="totalAmountSpentTodayBudgetIndicator" text="You're ... in/out your monthly budget" />
+            <Label fx:id="totalAmountSpentToday" styleClass="cash-view" text="100 €" />
+            <Label styleClass="description" text="Total amount spent today" />
+            <Pane prefHeight="10.0" />
+            <Separator maxWidth="1.7976931348623157E308" />
+            <Pane prefHeight="10.0" />
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <Pane prefWidth="13.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefWidth="13.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

@@ -196,14 +196,14 @@ public final class Expenses
         return amount;
     }
 
-    public double getTotalAmountOfExpensesOfThisMonth() {
+    public double getTotalAmountOfThisMonthExpenses() {
         YearMonth thisMonth = YearMonth.of(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
         LocalDate monthStart = thisMonth.atDay(1);
         LocalDate monthEnd = thisMonth.atEndOfMonth();
         return getTotalAmountOfExpensesOfDateRange(monthStart, monthEnd);
     }
 
-    public double getTotalAmountOfExpensesOfToday() {
+    public double getTotalAmountOfTodayExpenses() {
         return getTotalAmountOfExpensesOfDateRange(LocalDate.now(), LocalDate.now());
     }
 

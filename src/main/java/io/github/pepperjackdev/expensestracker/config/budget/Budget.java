@@ -6,19 +6,12 @@ import java.time.Period;
 public class Budget
     implements Serializable{
 
-    private static final double DEFAULT_AMOUNT = 0.0;
-    private static final Period DEFAULT_PERIOD = Period.ofYears(0);
-
     private Period period;
     private double amount;
     
     public Budget(Period period, double amount) {
         this.period = period;
         this.amount = amount;
-    }
-
-    public Budget() { // FIXME: This is not a good idea.
-        this(DEFAULT_PERIOD, DEFAULT_AMOUNT);
     }
 
     public Period getPeriod() {

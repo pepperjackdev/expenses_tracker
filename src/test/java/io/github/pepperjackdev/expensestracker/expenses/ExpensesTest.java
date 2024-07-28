@@ -69,13 +69,13 @@ public class ExpensesTest {
 
     @Test
     void testGetTotalExpensesOfToday() {
-        double result = expenses.getTotalAmountOfExpensesOfToday();
+        double result = expenses.getTotalAmountOfTodayExpenses();
         assertEquals(150.0, result);
     }
 
     @Test
     void testGetTotalExpensesOfThisMonth() {
-        double result = expenses.getTotalAmountOfExpensesOfThisMonth();
+        double result = expenses.getTotalAmountOfThisMonthExpenses();
         assertEquals(150.0, result);
     }
 

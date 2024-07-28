@@ -1,7 +1,5 @@
 package io.github.pepperjackdev.expensestracker.controllers;
 
-import java.io.IOException;
-
 import io.github.pepperjackdev.expensestracker.App;
 import io.github.pepperjackdev.expensestracker.controllers.views.Views;
 import javafx.fxml.FXML;
@@ -110,12 +108,8 @@ public class MainViewController {
     }
 
     void loadViewIntoDynamicFrame(Views view) {
-        try {
-            Node node = App.loadFXML(view.toString());
-            dynamicFrame.getChildren().setAll(node);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }    
+        Node node = App.loadFXML(view.toString());
+        dynamicFrame.getChildren().setAll(node); 
     }
 
     void loadViewIntoDynamicFrame(Views view, Button associatedButton) {

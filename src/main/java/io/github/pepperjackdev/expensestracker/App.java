@@ -15,13 +15,14 @@ import javafx.stage.StageStyle;
 
 public class App extends Application {
 
-    public static final Config config = Config.fromSerializedDataOrDefault("config.dat");
+    public static final Config config;
     public static final Expenses expenses; 
     public static Stage stage;
     private static Scene scene;
 
     static {
         expenses = new Expenses("data.db");
+        config = Config.fromSerializedDataOrDefault("config.dat");
     }
     
     @Override
@@ -38,9 +39,15 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
-    public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = getFXMLLoader(fxml);
-        return fxmlLoader.load();
+    public static Parent loadFXML(String fxml) {
+        FXMLLoader fxmlLoader;
+        try {
+            fxmlLoader = getFXMLLoader(fxml);
+            return fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static FXMLLoader getFXMLLoader(String fxml) throws IOException {
@@ -49,7 +56,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        // let's feed the database with some data
+        // launch the application
         launch();
+        
+        // save the configuration
+        config.saveToSerializedFile();
     }
 }
