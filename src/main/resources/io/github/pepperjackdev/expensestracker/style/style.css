@@ -61,8 +61,13 @@
     -fx-background-color: #778da917;
 }
 
-.list-view * {
-    -fx-background-color: #1B263B;
+ScrollPane {
+    -fx-background-color: transparent;
+}
+
+ScrollPane > .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
 }
 
 .box {

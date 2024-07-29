@@ -1,18 +1,18 @@
 package io.github.pepperjackdev.expensestracker.controllers;
 
+import java.util.List;
+
 import io.github.pepperjackdev.expensestracker.App;
 import io.github.pepperjackdev.expensestracker.expenses.Expense;
-import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 
 public class DashboardViewDailyExpensesController {
     
     @FXML Label totalAmountSpentTodayBudgetIndicator;
     @FXML Label totalAmountSpentToday;
-    @FXML ListView<Expense> dailyExpensesList;
+    @FXML VBox dailyExpensesList;
 
     @FXML
     void initialize() {
@@ -49,7 +49,12 @@ public class DashboardViewDailyExpensesController {
         // --- daily expenses list ---
 
         // Set the daily expenses list
-        dailyExpensesList.setItems(FXCollections.observableList(App.expenses.getTodaysExpenses()));
+        List<Expense> dailyExpenses = App.expenses.getTodaysExpenses();
+        dailyExpenses.forEach(expense -> {
+            dailyExpensesList.getChildren().add(
+                new Label(expense.toString())
+            );
+        });
 
     }
 }

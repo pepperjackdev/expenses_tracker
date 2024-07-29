@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -32,7 +32,11 @@
             <Pane prefHeight="10.0" />
             <StackPane>
                <children>
-                  <ListView fx:id="dailyExpensesList" maxHeight="1.7976931348623157E308" prefHeight="20.0" />
+                  <ScrollPane>
+                     <content>
+                        <VBox fx:id="dailyExpensesList" />
+                     </content>
+                  </ScrollPane>
                </children>
             </StackPane>
          </children>
