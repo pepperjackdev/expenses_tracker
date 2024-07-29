@@ -46,8 +46,8 @@
             <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <BorderPane fx:id="dailyExpensesFrame" styleClass="box" GridPane.rowIndex="1" />
-            <BorderPane fx:id="budgetStatusFrame" styleClass="box" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <VBox fx:id="dailyExpensesFrame" styleClass="box" GridPane.rowIndex="1" />
+            <VBox fx:id="budgetStatusFrame" styleClass="box" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>

@@ -4,14 +4,16 @@ import io.github.pepperjackdev.expensestracker.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class DashboardViewController {
-    
+    @FXML BorderPane monthStatus;
+
     @FXML Label totalAmountSpentThisMonthBudgetIndicator;
     @FXML Label totalAmountSpentThisMonth;
 
-    @FXML BorderPane dailyExpensesFrame;
-    @FXML BorderPane budgetStatusFrame;
+    @FXML VBox dailyExpensesFrame;
+    @FXML VBox budgetStatusFrame;
 
     @FXML
     void initialize() {

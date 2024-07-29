@@ -61,6 +61,10 @@
     -fx-background-color: #778da917;
 }
 
+.list-view * {
+    -fx-background-color: #1B263B;
+}
+
 .box {
     -fx-background-radius: 5px;
     -fx-background-color: #1B263B;

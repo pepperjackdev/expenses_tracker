@@ -132,8 +132,8 @@ public final class Expenses
 
         try (Connection connection = DriverManager.getConnection(getConnectionString())) {
             PreparedStatement getAllExpenses = connection.prepareStatement("SELECT id FROM expenses WHERE date BETWEEN ? AND ?");
-            getAllExpenses.setString(1, from.toString());
-            getAllExpenses.setString(2, to.toString());
+            getAllExpenses.setDate(1, Date.valueOf(from));
+            getAllExpenses.setDate(2, Date.valueOf(to));
             ResultSet resultSet = getAllExpenses.executeQuery();
 
             while (resultSet.next()) {

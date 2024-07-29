@@ -68,6 +68,12 @@ public class ExpensesTest {
     }
 
     @Test
+    void testGetAllExpensesOfToday() {
+        List<Expense> result = expenses.getTodaysExpenses();
+        assertEquals(5, result.size());
+    }
+
+    @Test
     void testGetTotalExpensesOfToday() {
         double result = expenses.getTotalAmountOfTodayExpenses();
         assertEquals(150.0, result);

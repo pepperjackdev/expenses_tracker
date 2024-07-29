@@ -1,13 +1,18 @@
 package io.github.pepperjackdev.expensestracker.controllers;
 
 import io.github.pepperjackdev.expensestracker.App;
+import io.github.pepperjackdev.expensestracker.expenses.Expense;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 public class DashboardViewDailyExpensesController {
     
     @FXML Label totalAmountSpentTodayBudgetIndicator;
     @FXML Label totalAmountSpentToday;
+    @FXML ListView<Expense> dailyExpensesList;
 
     @FXML
     void initialize() {
@@ -40,5 +45,11 @@ public class DashboardViewDailyExpensesController {
         } else {
             totalAmountSpentTodayBudgetIndicator.setStyle("-fx-text-fill: #90DE5F;");
         }
+
+        // --- daily expenses list ---
+
+        // Set the daily expenses list
+        dailyExpensesList.setItems(FXCollections.observableList(App.expenses.getTodaysExpenses()));
+
     }
 }
