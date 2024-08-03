@@ -33,7 +33,7 @@ public class DashboardViewDailyExpensesController {
         // Set the daily budget indicator
         double dailyOverBudget = App.expenses.getTotalAmountOfTodayExpenses() - App.config.getBudget().getDailyBudget();
         totalAmountSpentTodayBudgetIndicator.setText(String.valueOf(
-            "You're %s of your daily budget by %s".formatted(
+            "You're %s of your daily budget by %.2f".formatted(
                 (dailyOverBudget <= 0) ? "under" : "over",
                 Math.abs(dailyOverBudget)
             )

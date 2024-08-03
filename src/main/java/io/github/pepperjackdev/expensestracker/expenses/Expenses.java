@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 import io.github.pepperjackdev.expensestracker.database.Database;
+import io.github.pepperjackdev.expensestracker.utils.math.Calculus;
 
 public final class Expenses
     extends Database {
@@ -193,7 +194,7 @@ public final class Expenses
             e.printStackTrace();
         }
 
-        return amount;
+        return Calculus.roundByPlaces(amount, 2);
     }
 
     public double getTotalAmountOfThisMonthExpenses() {

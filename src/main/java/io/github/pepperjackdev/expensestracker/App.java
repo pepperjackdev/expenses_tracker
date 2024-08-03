@@ -56,6 +56,11 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+
+        config.getBudget().setMonthlyBudget(900);
+        System.out.println(config.getBudget().getDailyBudget());
+        System.out.println(config.getBudget().toString());
+
         // launch the application
         launch();
         

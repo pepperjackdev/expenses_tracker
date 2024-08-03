@@ -56,4 +56,30 @@ public class BudgetTest {
         budget.setMonthlyBudget(newMonthlyBudget);
         assertEquals(newMonthlyBudget, budget.getMonthlyBudget(), 0.0);
     }
+
+    @Test
+    public void testGetWeeklyBudget() {
+        double expectedWeeklyBudget = 230.76923076923077;
+        assertEquals(expectedWeeklyBudget, budget.getWeeklyBudget(), 0.0);
+    }
+
+    @Test
+    public void testSetWeeklyBudget() {
+        double newWeeklyBudget = 461.53846153846155;
+        budget.setWeeklyBudget(newWeeklyBudget);
+        assertEquals(newWeeklyBudget, budget.getWeeklyBudget(), 0.0);
+    }
+
+    @Test
+    public void testGetDailyBudget() {
+        double expectedDailyBudget = 3.896103896103896;
+        assertEquals(expectedDailyBudget, budget.getDailyBudget(), 0.0);
+    }
+
+    @Test
+    public void testSetDailyBudget() {
+        double newDailyBudget = 6.56;
+        budget.setDailyBudget(newDailyBudget);
+        assertEquals(newDailyBudget, budget.getDailyBudget(), 0.0);
+    }
 }

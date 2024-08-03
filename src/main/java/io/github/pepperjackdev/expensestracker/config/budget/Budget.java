@@ -3,6 +3,8 @@ package io.github.pepperjackdev.expensestracker.config.budget;
 import java.io.Serializable;
 import java.time.Period;
 
+import io.github.pepperjackdev.expensestracker.utils.math.Calculus;
+
 public class Budget
     implements Serializable{
 
@@ -23,34 +25,43 @@ public class Budget
     }
 
     public double getYearlyBudget() {
-        return amount / period.getYears();
+        return Calculus.roundByPlaces(amount / period.getYears(), 2);
     }
 
     public void setYearlyBudget(double yearlyBudget) {
-        amount = yearlyBudget * period.getYears();
+        setPeriod(period.withYears(1));
+        amount = yearlyBudget;
     }
 
     public double getMonthlyBudget() {
-        return amount / period.getMonths();
+        return Calculus.roundByPlaces(amount / period.getMonths(), 2);
     }
 
     public void setMonthlyBudget(double monthlyBudget) {
-        amount = monthlyBudget * period.getMonths();
+        setPeriod(period.withMonths(1));
+        amount = monthlyBudget;
     }
 
     public double getWeeklyBudget() {
-        return amount / period.getDays() / 7;
+        return Calculus.roundByPlaces(amount / period.getDays() / 7, 2);
     }
 
     public void setWeeklyBudget(double weeklyBudget) {
-        amount = weeklyBudget * period.getDays() * 7;
+        setPeriod(period.withDays(7));
+        amount = weeklyBudget;
     }
 
     public double getDailyBudget() {
-        return amount / period.getDays();
+        return Calculus.roundByPlaces(amount / period.getDays(), 2);
     }
 
     public void setDailyBudget(double dailyBudget) {
-        amount = dailyBudget * period.getDays();
+        setPeriod(period.withDays(1));
+        amount = dailyBudget;
+    }
+
+    @Override
+    public String toString() {
+        return "Budget of %s for %s years, %s months, %s days".formatted(amount, period.getYears(), period.getMonths(), period.getDays());
     }
 }
