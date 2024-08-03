@@ -2,6 +2,7 @@ package io.github.pepperjackdev.expensestracker.config.budget;
 
 import java.io.Serializable;
 import java.time.Period;
+import java.time.temporal.TemporalUnit;
 
 import io.github.pepperjackdev.expensestracker.utils.math.Calculus;
 
@@ -29,25 +30,25 @@ public class Budget
     }
 
     public void setYearlyBudget(double yearlyBudget) {
-        setPeriod(period.withYears(1));
+        setPeriod(Period.ofYears(1));
         amount = yearlyBudget;
     }
 
     public double getMonthlyBudget() {
-        return Calculus.roundByPlaces(amount / period.getMonths(), 2);
+        return Calculus.roundByPlaces(amount / period., 2);
     }
 
     public void setMonthlyBudget(double monthlyBudget) {
-        setPeriod(period.withMonths(1));
+        setPeriod(Period.ofMonths(1));
         amount = monthlyBudget;
     }
 
     public double getWeeklyBudget() {
-        return Calculus.roundByPlaces(amount / period.getDays() / 7, 2);
+        return Calculus.roundByPlaces(amount / (period.getDays() * 7), 2);
     }
 
     public void setWeeklyBudget(double weeklyBudget) {
-        setPeriod(period.withDays(7));
+        setPeriod(Period.ofWeeks(1));
         amount = weeklyBudget;
     }
 
@@ -56,7 +57,7 @@ public class Budget
     }
 
     public void setDailyBudget(double dailyBudget) {
-        setPeriod(period.withDays(1));
+        setPeriod(Period.ofDays(1));
         amount = dailyBudget;
     }
 

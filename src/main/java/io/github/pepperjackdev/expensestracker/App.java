@@ -57,7 +57,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
 
-        config.getBudget().setMonthlyBudget(900);
+        config.getBudget().setWeeklyBudget(900);
         System.out.println(config.getBudget().getDailyBudget());
         System.out.println(config.getBudget().toString());
 
