@@ -11,7 +11,7 @@ public class CalculusTest {
         double number = 1.23456789;
         int places = 2;
         double expected = 1.23;
-        double actual = Calculus.roundByPlaces(number, places);
+        double actual = MathUtils.roundByPlaces(number, places);
         assertEquals(expected, actual, 0.0);
     }
 }
