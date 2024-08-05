@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import io.github.pepperjackdev.expensestracker.utils.math.MathUtils;
+
 public class BudgetTest {
 
     private Budget budget;
@@ -34,7 +36,7 @@ public class BudgetTest {
 
     @Test
     public void testGetMonthlyBudget() {
-        double expected = 1000 / LocalDate.now().lengthOfYear() * LocalDate.now().lengthOfMonth();
+        double expected = MathUtils.roundByPlaces(1000.0 / LocalDate.now().lengthOfYear() * LocalDate.now().lengthOfMonth(), 2);
         double actual = budget.getMonthlyBudget();
         assertEquals(expected, actual, 0.0);
     }
@@ -49,7 +51,7 @@ public class BudgetTest {
 
     @Test
     public void testGetWeeklyBudget() {
-        double expected = 1000 / LocalDate.now().lengthOfYear() * 7;
+        double expected = MathUtils.roundByPlaces(1000.0 / LocalDate.now().lengthOfYear() * 7, 2);
         double actual = budget.getWeeklyBudget();
         assertEquals(expected, actual, 0.0);
     }
@@ -64,7 +66,7 @@ public class BudgetTest {
 
     @Test
     public void testGetDailyBudget() {
-        double expected = 1000 / LocalDate.now().lengthOfMonth();
+        double expected = MathUtils.roundByPlaces(1000.0 / LocalDate.now().lengthOfYear(), 2);
         double actual = budget.getDailyBudget();
         assertEquals(expected, actual, 0.0);
     }

@@ -32,7 +32,7 @@ public class Budget
     }
 
     public double getMonthlyBudget() {
-        return MathUtils.roundByPlaces(amount / period.toDays() * YearMonth.now().lengthOfMonth(), 2);
+        return MathUtils.roundByPlaces(amount / period.toDays() * LocalDate.now().lengthOfMonth(), 2);
     }
 
     public void setMonthlyBudget(double monthlyBudget) {

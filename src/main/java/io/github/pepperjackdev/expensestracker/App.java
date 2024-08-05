@@ -17,6 +17,7 @@ public class App extends Application {
 
     public static final Config config;
     public static final Expenses expenses; 
+    
     public static Stage stage;
     private static Scene scene;
 
@@ -56,11 +57,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-
-        config.getBudget().setWeeklyBudget(900);
-        System.out.println(config.getBudget().getDailyBudget());
-        System.out.println(config.getBudget().toString());
-
         // launch the application
         launch();
         
