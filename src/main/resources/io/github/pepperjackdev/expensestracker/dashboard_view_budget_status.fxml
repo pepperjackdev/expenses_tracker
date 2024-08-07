@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="box" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardViewDailyExpensesController">
+<BorderPane styleClass="box" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pepperjackdev.expensestracker.controllers.DashboardViewBudgetStatusController">
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -23,59 +22,43 @@
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <BorderPane>
                <right>
-                  <VBox BorderPane.alignment="CENTER">
+                  <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                      <children>
                         <Label fx:id="monthlyBudget" styleClass="cash-view" text="100 €" />
                         <Label styleClass="description" text="Your monthly budget" />
-                        <Pane prefHeight="10.0" />
-                        <Pane prefHeight="10.0" />
+                     </children>
+                  </VBox>
+               </right>
+               <left>
+                  <VBox BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <Label fx:id="dailyBudget" styleClass="cash-view" text="100 €" />
+                        <Label styleClass="description" text="Your daily budget" />
+                     </children>
+                  </VBox>
+               </left>
+            </BorderPane>
+            <Pane prefHeight="20.0" />
+            <BorderPane>
+               <right>
+                  <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="toRecover" styleClass="cash-view" text="100 €" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="-Infinity" minWidth="160.0" prefWidth="160.0" styleClass="description" text="To recover" wrapText="true" />
                      </children>
                   </VBox>
                </right>
                <left>
                   <VBox BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="dailyBudget" styleClass="cash-view" text="100 €" />
-                        <Label styleClass="description" text="Your daily budget" />
-                        <Pane prefHeight="10.0" />
-                        <Pane prefHeight="10.0" />
+                        <Label fx:id="remainingBudget" styleClass="cash-view" text="100 €" />
+                        <Label styleClass="description" text="Available to spent today" wrapText="true" />
                      </children>
                   </VBox>
                </left>
-               <center>
-                  <HBox alignment="CENTER" prefWidth="25.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Separator orientation="VERTICAL" />
-                     </children>
-                  </HBox>
-               </center>
             </BorderPane>
-            <Pane prefHeight="20.0" />
-            <HBox>
-               <children>
-                  <VBox>
-                     <children>
-                        <Label fx:id="dailyBudget1" styleClass="cash-view" text="100 €" />
-                        <Label styleClass="description" text="Available to spent today (in-budget)" wrapText="true" />
-                        <Pane prefHeight="10.0" />
-                        <Pane prefHeight="10.0" />
-                     </children>
-                  </VBox>
-                  <Pane prefWidth="13.0" />
-                  <Separator orientation="VERTICAL" />
-                  <Pane prefWidth="13.0" />
-                  <VBox>
-                     <children>
-                        <Label fx:id="monthlyBudget1" styleClass="cash-view" text="100 €" />
-                        <Label styleClass="description" text="To recover from previous extra-budget" wrapText="true" />
-                        <Pane prefHeight="10.0" />
-                        <Pane prefHeight="10.0" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
          </children>
       </VBox>
    </center>

@@ -51,6 +51,12 @@ public class DashboardViewController {
         // Initializing the boxes
         // -----------------------------------------------------
 
-        dailyExpensesFrame.getChildren().setAll(App.loadFXML("dashboard_view_daily_expenses"));
+        dailyExpensesFrame.getChildren().setAll(
+            App.loadFXML("dashboard_view_daily_expenses")
+        );
+
+        budgetStatusFrame.getChildren().setAll(
+            App.loadFXML("dashboard_view_budget_status")
+        );
     }
 }
